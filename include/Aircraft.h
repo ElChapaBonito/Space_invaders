@@ -15,7 +15,7 @@
 
 typedef  ResourceHolder<Texture::ID, sf::Texture> TextureHolder;
 
-class Aircraft: public Entity {
+class Aircraft: public Entity   {
 public:
     enum Type {
         F22,
