@@ -1,0 +1,6 @@
+/.idea/
+/cmake_modules/
+/cmake-build-debug/
+CMakeLists.txt
+.gitignore~
+..gitignore.un~
