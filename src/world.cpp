@@ -65,9 +65,9 @@ CommandQueue& World::getCommandQueue() {
 }
 
 void World::loadTexture() {
-    mTextureHolder.load(Texture::ID::F22, "../res/F22.png");
-    mTextureHolder.load(Texture::ID::Typhoon, "../res/Typhoon.png");
-    mTextureHolder.load(Texture::ID::Sfondo, "../res/Sfondo.jpg");
+    mTextureHolder.load(Texture::ID::F22, "./res/F22.png");
+    mTextureHolder.load(Texture::ID::Typhoon, "./res/Typhoon.png");
+    mTextureHolder.load(Texture::ID::Sfondo, "./res/Sfondo.jpg");
 }
 
 void World::buildScene() {

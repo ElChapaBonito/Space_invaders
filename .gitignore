@@ -4,3 +4,5 @@
 CMakeLists.txt
 .gitignore~
 ..gitignore.un~
+/build/*
+game
