@@ -1,18 +1,38 @@
 //
 // Created by anast on 01/11/2024.
 //
+
+
 #include "../include/Game.h"
 
-#include <iostream>
 
+void fpsCounter(sf::Clock& clock, float& fps_count);
+
+
+//Public methods
 
 Game::Game()
 :myWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),"Space Invaders")
 ,myWorld(myWindow){}
 
-void Game::update(sf::Time dt) {
-    myWorld.update(dt);
+
+void Game::run() {
+    sf::Clock CycleClock,
+              FPSClock;
+    sf::Time dt;
+    float fpsCount = 0;
+
+    while(myWindow.isOpen()) {
+        dt = CycleClock.restart();
+        processInputs();
+        update(dt);
+        fpsCounter(FPSClock, fpsCount);
+        render();
+    }
 }
+
+
+//Private methods
 
 
 void Game::processInputs() {
@@ -34,6 +54,11 @@ void Game::processInputs() {
     myPlayer.handleRealtimeInput(commands);
 }
 
+
+void Game::update(sf::Time dt) {
+    myWorld.update(dt);
+}
+
 void Game::render() {
     myWindow.clear();
     myWorld.draw();
@@ -51,17 +76,3 @@ void fpsCounter(sf::Clock& clock, float& fps_count) {
     fps_count++;
 }
 
-void Game::run() {
-    sf::Clock CycleClock,
-              FPSClock;
-    sf::Time dt;
-    float fpsCount = 0;
-
-    while(myWindow.isOpen()) {
-        dt = CycleClock.restart();
-        processInputs();
-        update(dt);
-        fpsCounter(FPSClock, fpsCount);
-        render();
-    }
-}
