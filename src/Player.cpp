@@ -32,10 +32,7 @@ struct aircraftMover {
 
 
 void Player::handleRealtimeInput(CommandQueue &commands) {
-    const float playerSpeed = 600.0f;
 
-    Command cmd;
-    cmd.category = Category::Type::PlayerAircraft;
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         Command moveUp;

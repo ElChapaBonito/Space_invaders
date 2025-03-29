@@ -8,6 +8,10 @@
 
 #include "Command.h"
 
+
+const float playerSpeed = 600.0f;
+
+
 class Player {
 public:
     void                                     handleEvent(const sf::Event& event, CommandQueue& commands);

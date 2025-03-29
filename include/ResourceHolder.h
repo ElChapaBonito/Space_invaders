@@ -35,7 +35,7 @@ class ResourceHolder {
 template<typename Identifier, typename Resource>
 void ResourceHolder<Identifier, Resource>::load(Identifier identifier, const std::string& filename) {
 
-    std::unique_ptr<Resource> resource(new Resource());
+    std::unique_ptr<Resource> resource = std::make_unique<Resource>();
 
     if(!resource->loadFromFile(filename))
         throw std::runtime_error("Failed to load resource from file " + filename);
