@@ -10,30 +10,31 @@
 #include <SFML/System.hpp>
 #include <iostream>
 
+#include "State.h"
 #include "Player.h"
 #include "world.h"
-#include "../include/ResourceHolder.h"
+#include "ResourceHolder.h"
 
-const unsigned int SCREEN_WIDTH = 1920;
-const unsigned int SCREEN_HEIGHT = 1080;
 
-class Game {
+
+class Game: public State {
 public:
-                        Game();
+                        Game(StateStack& stack, Context context);
+                        ~Game(){};
     void                run();
 
 
 
 private:
-    sf::RenderWindow                                            myWindow;
-    ResourceHolder<Texture::ID, sf::Texture>                    myTextureHolder;
-    World                                                       myWorld;
-    Player                                                      myPlayer;
+    TextureHolder&                                               myTextureHolder;
+    sf::RenderWindow&                                            myWindow;
+    World                                                        myWorld;
+    Player&                                                      myPlayer;
 
 private:
-    void                processInputs();
-    void                update(sf::Time dt);
-    void                render();
+    bool                handleEvent(const sf::Event& event) override;
+    bool                update(sf::Time dt) override;
+    void                draw() override;
 };
 
 

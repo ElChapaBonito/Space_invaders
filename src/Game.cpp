@@ -11,13 +11,17 @@ void fpsCounter(sf::Clock& clock, float& fps_count);
 
 //Public methods
 
-Game::Game()
-:myWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),"Space Invaders")
-,myWorld(myWindow){}
+Game::Game(StateStack& stack, Context context):
+    myPlayer(*context.player),
+    myWorld(*context.window),
+    State(stack, context),
+    myTextureHolder(*context.textures),
+    myWindow(*context.window)
+    {}
 
 
 void Game::run() {
-    sf::Clock CycleClock,
+    /*sf::Clock CycleClock,
               FPSClock;
     sf::Time dt;
     float fpsCount = 0;
@@ -29,37 +33,30 @@ void Game::run() {
         fpsCounter(FPSClock, fpsCount);
         render();
     }
+
+*/
 }
 
 
 //Private methods
 
 
-void Game::processInputs() {
+bool Game::handleEvent(const sf::Event& event) {
 
-    sf::Event evento;
     CommandQueue& commands = myWorld.getCommandQueue();
 
-
-    while (myWindow.pollEvent(evento)) {
-
-        if (evento.type == sf::Event::Closed) {
-            myWindow.close();
-        }
-
-        myPlayer.handleEvent(evento, commands);
-
-    }
+    myPlayer.handleEvent(event, commands);
 
     myPlayer.handleRealtimeInput(commands);
 }
 
 
-void Game::update(sf::Time dt) {
+bool Game::update(sf::Time dt) {
     myWorld.update(dt);
+    return true;
 }
 
-void Game::render() {
+void Game::draw() {
     myWindow.clear();
     myWorld.draw();
     myWindow.display();

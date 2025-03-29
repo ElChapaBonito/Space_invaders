@@ -4,12 +4,21 @@
 
 #ifndef RESOURCEHOLDER_H
 #define RESOURCEHOLDER_H
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <stdexcept>
 #include <memory>
-#include<cassert>
+#include <cassert>
+#include <map>
 
 namespace Texture {
     enum ID {F22, Typhoon, Sfondo,None};
 };
+
+namespace Fonts {
+    enum ID {ComicSans};
+}
 
 template<typename Identifier, typename Resource>
 class ResourceHolder {
@@ -47,5 +56,8 @@ const Resource &ResourceHolder<Identifier, Resource>::get(Identifier identifier)
     return *myResources.at(identifier);
 }
 
+using TextureHolder = ResourceHolder<Texture::ID, sf::Texture>;
 
-#endif //RESOURCEHOLDER_H
+using FontHolder = ResourceHolder<Fonts::ID, sf::Font>;
+
+#endif

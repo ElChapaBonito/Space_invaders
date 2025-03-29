@@ -1,10 +1,13 @@
 #include <iostream>
-#include "../include/Game.h"
+#include "Application.h"
+
+
 
 int main() {
+
     try {
-        Game gioco;
-        gioco.run();
+        Application app;
+        app.run();
     }
     catch (std::exception& e) {
         std::cout << e.what() << std::endl;

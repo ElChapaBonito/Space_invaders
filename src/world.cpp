@@ -95,4 +95,5 @@ void World::buildScene() {
     mPlayerAircraft->setPosition(mSpawnPosition);
     mPlayerAircraft->setVelocity(200.f,mScrollSpeed);
     mSceneLayers[Layer::Air] -> attachChild(std::move(leader));
+
 }

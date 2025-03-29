@@ -7,7 +7,10 @@ LDFLAGS = -L/usr/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 EXEC = game
 
-MAIN_DIR = /home/elchapa/Desktop/Space_invaders
+
+
+# ATTENZIONE: Rinominare questa directory a quella in cui è avete scaricato la repository
+MAIN_DIR = /home/elchapa/shared_folder/Space_invaders
 SRC_DIR = $(MAIN_DIR)/src
 RES_DIR = $(MAIN_DIR)/res
 INC_DIR = $(MAIN_DIR)/include

@@ -2,8 +2,7 @@
 // Created by anast on 24/11/2024.
 //
 
-#include "../include/Aircraft.h"
-
+#include "Aircraft.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 
 

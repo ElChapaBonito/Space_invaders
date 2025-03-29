@@ -4,6 +4,8 @@
 
 #ifndef SPRITENODE_H
 #define SPRITENODE_H
+
+#include <stdexcept>
 #include <SFML/Graphics/Sprite.hpp>
 
 #include "SceneNode.h"
