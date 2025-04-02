@@ -30,12 +30,13 @@ class Application {
     void                                        registerStates();
 
     private:
-    StateStack                                  mStateStack;
 
     sf::RenderWindow                            mWindow;
     Player                                      mPlayer;
     TextureHolder                               mTextureHolder;
     FontHolder                                  mFontsHolder;
+
+    StateStack                                  mStateStack;
 };
 
 

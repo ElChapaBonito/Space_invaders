@@ -6,7 +6,7 @@
 #include "../include/Player.h"
 #include <cassert>
 #include "../include/Aircraft.h"
-
+#include <iostream>
 
 class Aircraft;
 

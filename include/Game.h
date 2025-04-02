@@ -21,15 +21,13 @@ class Game: public State {
 public:
                         Game(StateStack& stack, Context context);
                         ~Game(){};
-    void                run();
-
 
 
 private:
-    TextureHolder&                                               myTextureHolder;
     sf::RenderWindow&                                            myWindow;
-    World                                                        myWorld;
     Player&                                                      myPlayer;
+    World                                                        myWorld;
+    
 
 private:
     bool                handleEvent(const sf::Event& event) override;

@@ -10,9 +10,10 @@
 #include "SceneNode.h"
 #include "ResourceHolder.h"
 #include "Aircraft.h"
-#include "../include/Command.h"
+#include "Command.h"
+#include "State.h"
 
-const int BackGroundLenght = 10000;
+const int BackGroundLenght = 100000;
 
 class World {
 public:

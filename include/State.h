@@ -61,7 +61,7 @@ class State {
 };
 
 
-class StateStack {
+class StateStack: private sf::NonCopyable {
 
     public:
     enum Action {
@@ -80,6 +80,7 @@ class StateStack {
         
         };
     }
+    std::size_t                                 size()const{return mStack.size();} ;
     void                                        processEvents(const sf::Event& event);
     void                                        update(sf::Time dt);
     void                                        draw();

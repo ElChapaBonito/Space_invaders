@@ -26,6 +26,7 @@ class ResourceHolder {
     void                load(Identifier identifier, const std::string& filename);
     Resource&           get(Identifier identifier);
     const Resource&     get(Identifier identifier) const;
+    size_t              size() const { return myResources.size(); }
 
     private:
     std::map<Identifier, std::unique_ptr<Resource>> myResources;

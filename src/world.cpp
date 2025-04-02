@@ -1,29 +1,29 @@
 //
 // Created by anast on 24/11/2024.
 //
-#include "../include/world.h"
+
+#include "world.h"
 
 #include <cmath>
 #include <iostream>
 
-#include "../include/SpriteNode.h"
+#include "SpriteNode.h"
 
 class SpriteNode;
 class CommandQueue;
 
-World::World(sf::RenderWindow& window)
-    : mWindow(window)
-      , mView(window.getDefaultView())
-      ,mWorldBounds(
-          0,
-          0,
-          mView.getSize().x,
-          BackGroundLenght)
-      ,mPlayerAircraft(nullptr)
-      ,mScrollSpeed(-100)
+const float CSCROLL_SPEED = -1000;
 
+World::World(sf::RenderWindow& window)
+    :mWindow(window),
+    mView(window.getDefaultView()),
+    mTextureHolder(),
+    mPlayerAircraft(nullptr),
+    mScrollSpeed(CSCROLL_SPEED),
+    mWorldBounds(0.0f,0.0f, mView.getSize().x, BackGroundLenght),
+    mCommandQueue()
 {
-    mSpawnPosition =sf::Vector2f(mView.getSize().x / 2.0f, mWorldBounds.height - mView.getSize().y/ 2.0) ;
+    mSpawnPosition =sf::Vector2f(mView.getSize().x / 2.0f, mWorldBounds.height - mView.getSize().y/ 2.0);
     loadTexture();
     buildScene();
     mView.setCenter(mSpawnPosition);
@@ -41,7 +41,7 @@ void World::update(sf::Time dt) {
 
     sf::Vector2f velocity = mPlayerAircraft->getVelocity();
     if (velocity.x != 0.f && velocity.y != 0.f)
-        mPlayerAircraft->setVelocity(velocity / std::sqrt(2.f));
+    mPlayerAircraft->setVelocity(velocity / std::sqrt(2.f));
     mPlayerAircraft->acellerate(sf::Vector2f(0.f, mScrollSpeed));
 
     sf::Vector2f pos = mPlayerAircraft->getPosition();
@@ -86,7 +86,7 @@ void World::buildScene() {
 
     std::unique_ptr<SpriteNode> BackGroundSprite(new SpriteNode(texture, textureRect));
     BackGroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
-
+    std::cout << mWorldBounds.left << " " << mWorldBounds.top << mWorldBounds.left << " " << mWorldBounds.height << mWorldBounds.width<< std::endl;
     mSceneLayers[Layer::Background] -> attachChild(std::move(BackGroundSprite));
 
 

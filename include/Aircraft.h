@@ -29,9 +29,9 @@ public:
     void                        acellerate(sf::Vector2f velocity);
 
 private:
-    sf::Sprite          mSprite;
-    Type                mType;
 
+    Type                mType;
+    sf::Sprite          mSprite;
 };
 
 

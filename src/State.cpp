@@ -8,19 +8,17 @@ StateStack::StateStack(State::Context context): mContext(context)
 
 void StateStack::processEvents(const sf::Event &event)
 {
-
+    
     for(auto r_it = mStack.rbegin(); r_it != mStack.rend(); r_it++){
-        if(!((*r_it)->handleEvent(event)));
+        if(!((*r_it)->handleEvent(event)))
             break;
     }
 
-    applyPendingChanges(); // Perche sta roba sta qui?
+    //applyPendingChanges(); // Perche sta roba sta qui?
 }
 
 void StateStack::update(sf::Time dt)
 {
-
-    std::cout << mStack.size() << std::endl;
     for(auto r_it = mStack.rbegin(); r_it != mStack.rend(); r_it++){
         if(!(*r_it)->update(dt)){
             return;
